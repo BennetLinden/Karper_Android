@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="karper_beige">#9E824A</color>
+    <color name="karper_brown">#403930</color>
+
+    <color name="gradient_start">#7f7262</color>
+    <color name="gradient_end">#dbb564</color>
+
+    <color name="actionbar_color_start">#bcaa95</color>
+    <color name="actionbar_color_end">#7f7262</color>
+    <color name="actionbar_text">#dbb564</color>
+
+</resources>

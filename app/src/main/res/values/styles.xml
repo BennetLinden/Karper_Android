@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/KarperActionBar</item>
+
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="KarperActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/background_actionbar</item>
+        <item name="android:titleTextStyle">@style/KarperActionBar.TextStyle</item>
+    </style>
+
+    <!-- ActionBar text style-->
+    <style name="KarperActionBar.TextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/actionbar_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
