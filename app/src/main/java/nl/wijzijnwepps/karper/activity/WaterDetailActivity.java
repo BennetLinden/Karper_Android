@@ -85,4 +85,10 @@ public class WaterDetailActivity extends Activity {
             beschrijving.setText(water.getBeschrijvingEN());
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
 }

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.nirhart.parallaxscroll.views.ParallaxListView;
 
@@ -54,10 +55,13 @@ public class MainActivity extends Activity {
         regionList.addParallaxedHeaderView(france);
         regionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, DepartmentActivity.class);
-                intent.putExtra("department",DepartementController.getInstance(MainActivity.this).getDepartments().get(i-1));
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                if(position!=0) {
+                    Intent intent = new Intent(MainActivity.this, DepartmentActivity.class);
+                    intent.putExtra("department", DepartementController.getInstance(MainActivity.this).getDepartments().get(position - 1));
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                }
             }
         });
 

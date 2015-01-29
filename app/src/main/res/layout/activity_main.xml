@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -24,6 +25,12 @@
             android:src="@android:drawable/ic_menu_search"/>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/mainProgressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"/>
 
 <com.nirhart.parallaxscroll.views.ParallaxListView
     xmlns:tools="http://schemas.android.com/tools"
