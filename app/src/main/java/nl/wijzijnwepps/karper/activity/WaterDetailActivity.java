@@ -79,11 +79,7 @@ public class WaterDetailActivity extends Activity {
         else onlineView.setText("Niet online verkrijgbaar");
 
         TextView beschrijving = (TextView) findViewById(R.id.description);
-        if(Locale.getDefault().getLanguage().equals("nl")){
-            beschrijving.setText(water.getBeschrijving());
-        } else {
-            beschrijving.setText(water.getBeschrijvingEN());
-        }
+        beschrijving.setText(water.getBeschrijving());
     }
 
     @Override

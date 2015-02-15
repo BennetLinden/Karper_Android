@@ -1,77 +1,83 @@
 package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
-import com.nirhart.parallaxscroll.views.ParallaxListView;
-
-import java.util.ArrayList;
-
-import de.greenrobot.event.EventBus;
 import nl.wijzijnwepps.karper.R;
-import nl.wijzijnwepps.karper.adapter.DepartmentAdapter;
-import nl.wijzijnwepps.karper.controller.DepartementController;
-import nl.wijzijnwepps.karper.event.DepartmentsLoadedEvent;
-import nl.wijzijnwepps.karper.model.Departement;
-import nl.wijzijnwepps.karper.task.CSVParseTask;
-import nl.wijzijnwepps.karper.task.ParseDepartmentJSONTask;
+import nl.wijzijnwepps.karper.fragment.DepartmentFragment;
+import nl.wijzijnwepps.karper.fragment.DrawerFragment;
 
 public class MainActivity extends Activity {
 
-    private DepartmentAdapter departmentAdapter;
-    private ParallaxListView regionList;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle drawerToggle;
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        EventBus.getDefault().unregister(this);
-    }
+    DrawerFragment drawerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        regionList = (ParallaxListView) findViewById(R.id.region_list);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerFragment = new DrawerFragment();
 
-        ImageView france = new ImageView(this);
-        france.setImageDrawable(getResources().getDrawable(R.drawable.france));
-        france.setBackground(getResources().getDrawable(R.drawable.background_map_gradient));
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new DepartmentFragment())
+                .replace(R.id.left_drawer, new DrawerFragment())
+                .commit();
 
-        regionList.addParallaxedHeaderView(france);
-        regionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                if(position!=0) {
-                    Intent intent = new Intent(MainActivity.this, DepartmentActivity.class);
-                    intent.putExtra("department", DepartementController.getInstance(MainActivity.this).getDepartments().get(position - 1));
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                }
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
+                android.R.drawable.ic_menu_edit, R.string.drawer_open, R.string.drawer_close) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
-        });
 
-        ParseDepartmentJSONTask parseTask = new ParseDepartmentJSONTask(this);
-        parseTask.execute();
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+
+        // Set the drawer toggle as the DrawerListener
+        drawerLayout.setDrawerListener(drawerToggle);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
     }
 
-    public void onEventMainThread(DepartmentsLoadedEvent event){
-        DepartementController.getInstance(this).setDepartments(event.getDepartments());
-        departmentAdapter = new DepartmentAdapter(this, R.layout.list_item_department, DepartementController.getInstance(this).getDepartments());
-        regionList.setAdapter(departmentAdapter);
+    /* Called whenever we call invalidateOptionsMenu() */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+//        // If the nav drawer is open, hide action items related to the content view
+//        boolean drawerOpen = drawerLayout.isDrawerOpen((View) drawerFragment);
+//        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle your other action bar items...
+        if(item.getItemId()==R.id.action_search){
+            //Search
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

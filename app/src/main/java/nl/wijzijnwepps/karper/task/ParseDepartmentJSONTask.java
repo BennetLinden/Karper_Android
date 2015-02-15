@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import de.greenrobot.event.EventBus;
 import nl.wijzijnwepps.karper.event.DepartmentsLoadedEvent;
@@ -73,17 +74,16 @@ public class ParseDepartmentJSONTask extends AsyncTask<Void,Void,ArrayList<Depar
                 water.setCity(entry.getString("Stad"));
 
                 //Add features to water
-                if(entry.getString("Boot toegestaan").equals("ja")) water.setBootToegestaan(true);
-                if(entry.getString("Electrische boot").equals("ja")) water.setElectrischeBoot(true);
-                if(entry.getString("Roeiboot").equals("ja")) water.setRoeiboot(true);
-                if(entry.getString("Voerboot").equals("ja")) water.setVoerboot(true);
-                if(entry.getString("Nachtvissen toegestaan").equals("ja")) water.setNachtvissenToegestaan(true);
-                if(entry.getString("Vergunning online verkrijgbaar").equals("ja")) water.setVergunningOnlineVerkrijgbaar(true);
+                if(entry.getString("Boot toegestaan").equals("ja") || entry.getString("Boot toegestaan").equals("yes")) water.setBootToegestaan(true);
+                if(entry.getString("Electrische boot").equals("ja") || entry.getString("Electrische boot").equals("yes")) water.setElectrischeBoot(true);
+                if(entry.getString("Roeiboot").equals("ja") || entry.getString("Roeiboot").equals("yes") ) water.setRoeiboot(true);
+                if(entry.getString("Voerboot").equals("ja") || entry.getString("Voerboot").equals("yes")) water.setVoerboot(true);
+                if(entry.getString("Nachtvissen toegestaan").equals("ja") || entry.getString("Nachtvissen toegestaan").equals("yes")) water.setNachtvissenToegestaan(true);
+                if(entry.getString("Vergunning online verkrijgbaar").equals("ja") ||  entry.getString("Vergunning online verkrijgbaar").equals("yes")) water.setVergunningOnlineVerkrijgbaar(true);
                 water.setAantalHengels(entry.optInt("Aantal Hengels"));
                 water.setCategorie(entry.optInt("Categorie (1 of 2)",2));
                 water.setHectare(entry.getString("Hectare"));
                 water.setBeschrijving(entry.getString("Omschrijving"));
-                water.setBeschrijvingEN(entry.getString("Omschrijving_UK"));
 
                 dept.addWater(water);
             }
@@ -104,8 +104,14 @@ public class ParseDepartmentJSONTask extends AsyncTask<Void,Void,ArrayList<Depar
 
     public String loadJSONFromAsset() {
         String json = null;
+        String fileName = "";
+        if(Locale.getDefault().getLanguage().equals("nl")){
+            fileName = "data_nl.json";
+        } else {
+            fileName = "data_en.json";
+        }
         try {
-            InputStream is = context.getAssets().open("karper.json");
+            InputStream is = context.getAssets().open(fileName);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

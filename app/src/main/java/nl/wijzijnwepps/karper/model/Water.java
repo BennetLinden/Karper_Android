@@ -23,7 +23,6 @@ public class Water implements Serializable {
     private int categorie; //1 or 2
     private String Hectare; //String because it can be 'n/a'
     private String beschrijving;
-    private String beschrijvingEN;
 
     public Water(){}
 
@@ -143,13 +142,5 @@ public class Water implements Serializable {
 
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
-    }
-
-    public String getBeschrijvingEN() {
-        return beschrijvingEN;
-    }
-
-    public void setBeschrijvingEN(String beschrijvingEN) {
-        this.beschrijvingEN = beschrijvingEN;
     }
 }
