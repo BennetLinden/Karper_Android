@@ -11,4 +11,13 @@
     <color name="actionbar_color_end">#7f7262</color>
     <color name="actionbar_text">#dbb564</color>
 
+    <color name="button_disagree_start">#6C5F4F</color>
+    <color name="button_disagree_end">#332C1F</color>
+    <color name="button_agree_start">#D6A952</color>
+    <color name="button_agree_end">#8C713D</color>
+
+    <color name="background_login">#F1F5FA</color>
+
+    <color name="input_border">#BCBDBE</color>
+
 </resources>

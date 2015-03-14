@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:background="@color/karper_brown"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_margin="3dp"
+            android:layout_height="wrap_content"
+            android:text="@string/disagree"
+            android:background="@drawable/button_disagree"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:id="@+id/disagree" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/agree"
+            android:layout_margin="3dp"
+            android:background="@drawable/button_agree"
+            android:textColor="@color/karper_brown"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:id="@+id/agree" />
+
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/disclaimer_webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/karper_beige"
+        android:layout_above="@id/button_container"/>
+
+</RelativeLayout>

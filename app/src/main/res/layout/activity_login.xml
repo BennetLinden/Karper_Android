@@ -1,54 +1,99 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
+    android:background="@color/background_login"
     android:focusableInTouchMode="true">
 
+    <ImageView
+        android:id="@+id/two_fish"
+        android:src="@drawable/ic_fish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="-100dp"/>
 
     <EditText
         android:id="@+id/emailField"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:hint="@string/email"
+        android:layout_below="@id/two_fish" />
 
     <EditText
         android:id="@+id/passwordField"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:hint="@string/password"
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_below="@+id/emailField"
-        android:layout_alignLeft="@+id/emailField"
-        android:layout_alignStart="@+id/emailField" />
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_disagree"
         android:layout_below="@+id/passwordField"
-        android:layout_alignLeft="@+id/passwordField"
-        android:layout_alignStart="@+id/passwordField" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
-    <Button
-        android:id="@+id/buttonRegister"
+    <TextView
+        android:id="@+id/forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registreer"
-        android:layout_toEndOf="@+id/buttonLogin"
-        android:layout_below="@+id/buttonLogin"
-        android:layout_alignLeft="@+id/buttonLogin"
-        android:layout_alignStart="@+id/buttonLogin" />
+        android:layout_below="@id/buttonLogin"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/karper_brown"
+        android:text="Wachtwoord vergeten"/>
 
-    <Button
-        android:id="@+id/buttonFacebook"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Login met Facebook"
-        android:layout_below="@+id/buttonRegister"
-        android:layout_alignLeft="@+id/buttonRegister"
-        android:layout_alignStart="@+id/buttonRegister" />
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_disagree"
+            android:text="Registreer" />
+
+        <com.facebook.widget.LoginButton
+            android:id="@+id/buttonFacebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp" />
+
+
+        </LinearLayout>
+
 </RelativeLayout>

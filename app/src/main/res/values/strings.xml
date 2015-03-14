@@ -2,10 +2,14 @@
 <resources>
 
     <string name="app_name">Karper</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Closed</string>
     <string name="action_search">Zoek</string>
+    <string name="disagree">I DISAGREE</string>
+    <string name="agree">I AGREE</string>
+    <string name="email">E-mailadres</string>
+    <string name="password">Wachtwoord</string>
+    <string name="login">LOGIN</string>
+    <string name="app_id">1555786221344482</string>
 
 </resources>

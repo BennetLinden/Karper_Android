@@ -3,7 +3,6 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/KarperActionBar</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
     <!-- ActionBar styles -->
@@ -17,12 +16,6 @@
     <style name="KarperActionBar.TextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@color/actionbar_text</item>
         <item name="android:textStyle">bold</item>
-    </style>
-
-
-    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">true</item>
-        <item name="color">@android:color/white</item>
     </style>
 
 </resources>
