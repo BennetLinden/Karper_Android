@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
                 .commit();
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                android.R.drawable.ic_menu_edit, R.string.drawer_open, R.string.drawer_close) {
+                R.drawable.ic_burger, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
