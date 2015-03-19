@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.facebook.widget.LoginButton;
 import com.parse.LogInCallback;
@@ -28,6 +29,9 @@ import nl.wijzijnwepps.karper.widget.KarperDialog;
 public class LoginFragment extends Fragment implements LogInCallback {
 
     private EditText emailField, passwordField;
+    private String email, password;
+    private SecurePreferencesHelper helper;
+    private RelativeLayout overlay;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -37,6 +41,16 @@ public class LoginFragment extends Fragment implements LogInCallback {
 
         emailField = (EditText) view.findViewById(R.id.emailField);
         passwordField = (EditText) view.findViewById(R.id.passwordField);
+
+        overlay = (RelativeLayout) view.findViewById(R.id.overlay);
+
+        helper = new SecurePreferencesHelper(getActivity());
+        emailField.setText(helper.getString("username",""));
+        passwordField.setText(helper.getString("password",""));
+
+        if(helper.getBoolean("autoLogin",false)){
+            login();
+        }
 
         Button loginButton = (Button) view.findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +75,13 @@ public class LoginFragment extends Fragment implements LogInCallback {
     }
 
     private void login(){
-        String email, password;
         email = emailField.getText().toString();
         password = passwordField.getText().toString();
 
         if(!email.equals("")){
             if(!password.equals("")){
                 ParseUser.logInInBackground(email,password,this);
+                overlay.setVisibility(View.VISIBLE);
             } else {
                 new KarperDialog(getActivity(),"Leeg wachtwoord", "Het wachtwoord mag niet leeg zijn");
             }
@@ -95,8 +109,12 @@ public class LoginFragment extends Fragment implements LogInCallback {
     //result of login attempt
     @Override
     public void done(ParseUser parseUser, ParseException e) {
+        overlay.setVisibility(View.GONE);
         if (parseUser != null) {
             startMainActivity();
+            helper.putBoolean("autoLogin", true);
+            helper.putString("username",email);
+            helper.putString("password",password);
         } else {
             // Signup failed. Look at the ParseException to see what happened.
             new KarperDialog(getActivity(), "Login mislukt", e.getMessage());

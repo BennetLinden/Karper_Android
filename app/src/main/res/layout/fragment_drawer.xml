@@ -20,7 +20,8 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/button_home"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Home"
             android:textColor="@color/karper_brown"
@@ -34,7 +35,8 @@
             android:background="@color/actionbar_color_end"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/button_search"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Zoeken"
             android:textColor="@color/karper_brown"
@@ -48,7 +50,8 @@
             android:background="@color/actionbar_color_end"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/button_help"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Help"
             android:textColor="@color/karper_brown"
@@ -62,7 +65,8 @@
             android:background="@color/actionbar_color_end"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/button_privacy"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Privacy"
             android:textColor="@color/karper_brown"
@@ -76,7 +80,8 @@
             android:background="@color/actionbar_color_end"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/button_logout"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Uitloggen"
             android:textColor="@color/karper_brown"

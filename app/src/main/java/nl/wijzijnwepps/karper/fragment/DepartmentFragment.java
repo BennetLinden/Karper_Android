@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.nirhart.parallaxscroll.views.ParallaxListView;
 
@@ -23,6 +24,7 @@ public class DepartmentFragment extends Fragment {
 
     private DepartmentAdapter departmentAdapter;
     private ParallaxListView regionList;
+    private RelativeLayout overlay;
 
     @Override
     public void onResume() {
@@ -42,6 +44,8 @@ public class DepartmentFragment extends Fragment {
                 false);
 
         regionList = (ParallaxListView) rootView.findViewById(R.id.region_list);
+        overlay = (RelativeLayout) rootView.findViewById(R.id.overlay);
+        overlay.setVisibility(View.VISIBLE);
 
         ImageView france = new ImageView(getActivity());
         france.setImageDrawable(getResources().getDrawable(R.drawable.france));
@@ -60,9 +64,14 @@ public class DepartmentFragment extends Fragment {
             }
         });
 
-        ParseDepartmentJSONTask parseTask = new ParseDepartmentJSONTask(getActivity());
-        parseTask.execute();
-
+        if(DepartementController.getInstance(getActivity()).getDepartments().size()==0){
+            ParseDepartmentJSONTask parseTask = new ParseDepartmentJSONTask(getActivity());
+            parseTask.execute();
+        } else {
+            departmentAdapter = new DepartmentAdapter(getActivity(), R.layout.list_item_department, DepartementController.getInstance(getActivity()).getDepartments());
+            regionList.setAdapter(departmentAdapter);
+            overlay.setVisibility(View.GONE);
+        }
         return rootView;
     }
 
@@ -70,5 +79,6 @@ public class DepartmentFragment extends Fragment {
         DepartementController.getInstance(getActivity()).setDepartments(event.getDepartments());
         departmentAdapter = new DepartmentAdapter(getActivity(), R.layout.list_item_department, DepartementController.getInstance(getActivity()).getDepartments());
         regionList.setAdapter(departmentAdapter);
+        overlay.setVisibility(View.GONE);
     }
 }

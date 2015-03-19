@@ -14,6 +14,8 @@ public class LoginActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActionBar().setTitle("Login");
+
         if (savedInstanceState == null) {
             // Add the fragment on initial activity setup
             loginFragment = new LoginFragment();

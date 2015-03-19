@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -23,15 +24,20 @@ import nl.wijzijnwepps.karper.widget.KarperDialog;
 public class RegisterActivity extends Activity implements SignUpCallback {
 
     private EditText nameField, emailField, passwordField;
+    private RelativeLayout overlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getActionBar().setTitle("Aanmelden");
+
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
+
+        overlay = (RelativeLayout) findViewById(R.id.overlay);
 
         Button registerButton = (Button) findViewById(R.id.buttonRegister);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +58,7 @@ public class RegisterActivity extends Activity implements SignUpCallback {
         if(!name.equals("")){
             if(!email.equals("")){
                 if(!password.equals("")){
+                    overlay.setVisibility(View.VISIBLE);
                     ParseUser parseUser = new ParseUser();
                     parseUser.setUsername(name);
                     parseUser.setEmail(email);
@@ -83,6 +90,7 @@ public class RegisterActivity extends Activity implements SignUpCallback {
     //Done signing up on background
     @Override
     public void done(ParseException e) {
+        overlay.setVisibility(View.GONE);
         if (e == null) {
             // Register succeeded
             startMainActivity();
@@ -92,5 +100,12 @@ public class RegisterActivity extends Activity implements SignUpCallback {
             new KarperDialog(this, "Login mislukt", e.getMessage());
             Log.e("Parse","Register unsuccessful: "+e.getMessage());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
+        finish();
     }
 }

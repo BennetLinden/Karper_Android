@@ -19,5 +19,6 @@
     <color name="background_login">#F1F5FA</color>
 
     <color name="input_border">#BCBDBE</color>
+    <color name="overlay">#AA000000</color>
 
 </resources>

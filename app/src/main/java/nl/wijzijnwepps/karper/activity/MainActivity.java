@@ -12,6 +12,9 @@ import android.view.View;
 import nl.wijzijnwepps.karper.R;
 import nl.wijzijnwepps.karper.fragment.DepartmentFragment;
 import nl.wijzijnwepps.karper.fragment.DrawerFragment;
+import nl.wijzijnwepps.karper.fragment.HelpFragment;
+import nl.wijzijnwepps.karper.fragment.PrivacyFragment;
+import nl.wijzijnwepps.karper.fragment.SearchFragment;
 
 public class MainActivity extends Activity {
 
@@ -80,4 +83,38 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void showHomeView(){
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new DepartmentFragment())
+                .commit();
+        drawerLayout.closeDrawers();
+    }
+
+    public void showSearchView(){
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new SearchFragment())
+                .commit();
+        drawerLayout.closeDrawers();
+    }
+
+    public void showHelpView(){
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new HelpFragment())
+                .commit();
+        drawerLayout.closeDrawers();
+    }
+
+    public void showPrivacyView(){
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, new PrivacyFragment())
+                .commit();
+        drawerLayout.closeDrawers();
+    }
+
+
 }

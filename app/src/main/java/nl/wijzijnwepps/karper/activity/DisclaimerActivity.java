@@ -40,6 +40,7 @@ public class DisclaimerActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(DisclaimerActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

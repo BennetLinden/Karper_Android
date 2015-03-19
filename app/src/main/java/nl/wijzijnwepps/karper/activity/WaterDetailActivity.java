@@ -2,6 +2,7 @@ package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,10 +69,27 @@ public class WaterDetailActivity extends Activity {
         else nightView.setText("Niet toegestaan");
 
         TextView boatView = (TextView) findViewById(R.id.boat);
-        if(water.isElectrischeBoot()) boatView.setText("Elektrische boot");
-        else if(water.isBenzineBoot()) boatView.setText("Benzine boot");
-        else if(water.isRoeiboot()) boatView.setText("Roeiboot");
-        else if(water.isVoerboot()) boatView.setText("Voerboot");
+        String boatText = "";
+        Boolean boatSpecified = false;
+        if(water.isElectrischeBoot()){
+            boatText += "Elektrische boot, ";
+            boatSpecified = true;
+        }
+        if(water.isBenzineBoot()){
+            boatText += "Benzine boot, ";
+            boatSpecified = true;
+        }
+        if(water.isRoeiboot()){
+            boatText += "Roeiboot, ";
+            boatSpecified = true;
+        }
+        if(water.isVoerboot()){
+            boatText += "Voerboot";
+            boatSpecified = true;
+        }
+
+        if(boatSpecified) boatView.setText(boatText);
+        else if(water.isBootToegestaan()) boatView.setText("Toegestaan, ongespecificeerd");
         else boatView.setText("Niet toegestaan");
 
         TextView onlineView = (TextView) findViewById(R.id.online);
