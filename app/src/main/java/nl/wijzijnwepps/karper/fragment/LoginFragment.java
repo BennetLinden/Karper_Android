@@ -8,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.facebook.widget.LoginButton;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 import java.util.Arrays;
 
@@ -18,9 +22,12 @@ import nl.wijzijnwepps.karper.activity.DisclaimerActivity;
 import nl.wijzijnwepps.karper.activity.MainActivity;
 import nl.wijzijnwepps.karper.activity.RegisterActivity;
 import nl.wijzijnwepps.karper.helper.SecurePreferencesHelper;
+import nl.wijzijnwepps.karper.widget.KarperDialog;
 
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements LogInCallback {
+
+    private EditText emailField, passwordField;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -28,11 +35,14 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_login, container, false);
 
+        emailField = (EditText) view.findViewById(R.id.emailField);
+        passwordField = (EditText) view.findViewById(R.id.passwordField);
+
         Button loginButton = (Button) view.findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startMainActivity();
+                login();
             }
         });
         Button registerButton = (Button) view.findViewById(R.id.buttonRegister);
@@ -48,6 +58,22 @@ public class LoginFragment extends Fragment {
         facebookButton.setFragment(this);
 
         return view;
+    }
+
+    private void login(){
+        String email, password;
+        email = emailField.getText().toString();
+        password = passwordField.getText().toString();
+
+        if(!email.equals("")){
+            if(!password.equals("")){
+                ParseUser.logInInBackground(email,password,this);
+            } else {
+                new KarperDialog(getActivity(),"Leeg wachtwoord", "Het wachtwoord mag niet leeg zijn");
+            }
+        } else {
+            new KarperDialog(getActivity(),"Geen emailadres", "Vul aub een geldig emailadres in");
+        }
     }
 
     public void startMainActivity(){
@@ -66,9 +92,15 @@ public class LoginFragment extends Fragment {
         startActivity(intent);
     }
 
+    //result of login attempt
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
-        Log.i("trace", "result");
+    public void done(ParseUser parseUser, ParseException e) {
+        if (parseUser != null) {
+            startMainActivity();
+        } else {
+            // Signup failed. Look at the ParseException to see what happened.
+            new KarperDialog(getActivity(), "Login mislukt", e.getMessage());
+            Log.e("Parse","Login unsuccessful: "+e.getMessage());
+        }
     }
 }

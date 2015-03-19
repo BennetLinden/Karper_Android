@@ -16,6 +16,23 @@
         android:layout_marginTop="-100dp"/>
 
     <EditText
+        android:id="@+id/nameField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:hint="Naam"
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/two_fish"
+        android:layout_marginTop="10dp" />
+
+    <EditText
         android:id="@+id/emailField"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -24,12 +41,13 @@
         android:background="@drawable/background_input"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:hint="@string/email"
-        android:layout_below="@id/two_fish" />
+        android:layout_below="@id/nameField" />
 
     <EditText
         android:id="@+id/passwordField"
@@ -49,51 +67,16 @@
         android:layout_marginTop="10dp" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonRegister"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textColor="#FFFFFF"
         android:background="@drawable/button_disagree"
-        android:layout_below="@+id/passwordField"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-
-    <TextView
-        android:id="@+id/forgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonLogin"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/karper_brown"
-        android:text="Wachtwoord vergeten"/>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/buttonRegister"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/button_disagree"
-            android:text="@string/register" />
-
-        <com.facebook.widget.LoginButton
-            android:id="@+id/buttonFacebook"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="5dp" />
-
-
-        </LinearLayout>
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

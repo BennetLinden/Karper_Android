@@ -7,9 +7,11 @@
     <string name="action_search">Zoek</string>
     <string name="disagree">I DISAGREE</string>
     <string name="agree">I AGREE</string>
+    <string name="name">Naam</string>
     <string name="email">E-mailadres</string>
     <string name="password">Wachtwoord</string>
     <string name="login">LOGIN</string>
     <string name="app_id">1555786221344482</string>
+    <string name="register">Aanmelden</string>
 
 </resources>
