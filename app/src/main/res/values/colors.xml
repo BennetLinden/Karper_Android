@@ -20,5 +20,6 @@
 
     <color name="input_border">#BCBDBE</color>
     <color name="overlay">#AA000000</color>
+    <color name="white">#FFFFFF</color>
 
 </resources>

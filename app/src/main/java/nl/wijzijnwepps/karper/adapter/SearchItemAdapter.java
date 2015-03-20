@@ -43,8 +43,8 @@ public class SearchItemAdapter extends ArrayAdapter<SearchItem> {
         }
 
         TextView typeView = (TextView) convertView.findViewById(R.id.search_item_type);
-        if(searchItems.get(position).getType()== SearchItem.Type.DEPARTMENT) typeView.setText("Departement");
-        else typeView.setText("Water");
+        if(searchItems.get(position).getType()== SearchItem.Type.DEPARTMENT) typeView.setText(context.getString(R.string.department));
+        else typeView.setText(context.getString(R.string.water));
 
         TextView nameView = (TextView) convertView.findViewById(R.id.search_item_name);
         if(searchItems.get(position).getType()== SearchItem.Type.DEPARTMENT) nameView.setText(searchItems.get(position).getDepartement().getName());

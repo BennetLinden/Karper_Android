@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.nirhart.parallaxscroll.views.ParallaxListView;
 
@@ -46,6 +47,8 @@ public class DepartmentFragment extends Fragment {
         regionList = (ParallaxListView) rootView.findViewById(R.id.region_list);
         overlay = (RelativeLayout) rootView.findViewById(R.id.overlay);
         overlay.setVisibility(View.VISIBLE);
+        TextView activeText = (TextView) rootView.findViewById(R.id.active_with_text);
+        activeText.setText(getActivity().getString(R.string.action_loading_data));
 
         ImageView france = new ImageView(getActivity());
         france.setImageDrawable(getResources().getDrawable(R.drawable.france));

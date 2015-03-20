@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Infomatie:"/>
+        android:text="@string/label_information"/>
 
     <TableLayout
         android:id="@+id/info_table"
@@ -77,7 +77,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Departement"
+                android:text="@string/department"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
@@ -97,7 +97,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stad"
+                android:text="@string/city"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
@@ -117,7 +117,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hectare"
+                android:text="@string/area"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
@@ -137,7 +137,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Categorie"
+                android:text="@string/category"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
@@ -157,14 +157,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nachtvissen"
+                android:text="@string/night_fishing"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Toegestaan"
+                android:text="@string/allowed"
                 android:id="@+id/night"
                 android:layout_margin="10dp"
                 android:layout_column="1" />
@@ -177,14 +177,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Boot"
+                android:text="@string/boat"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Benzine boot"
+                android:text="@string/boat_fuel"
                 android:layout_margin="10dp"
                 android:id="@+id/boat"
                 android:layout_column="1" />
@@ -197,14 +197,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vergunning"
+                android:text="@string/licence"
                 android:layout_margin="10dp"
                 android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Online verkrijgbaar"
+                android:text="@string/licence_online"
                 android:layout_margin="10dp"
                 android:id="@+id/online"
                 android:layout_column="1" />
@@ -221,7 +221,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Omschrijving:"/>
+        android:text="@string/label_description"/>
 
     <TextView
         android:layout_below="@id/title_beschrijving"
@@ -229,6 +229,6 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="lorem ipsum"/>
+        android:text="@string/lorem_ipsum"/>
 
 </RelativeLayout>

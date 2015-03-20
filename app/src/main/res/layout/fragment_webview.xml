@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <WebView
-        android:id="@+id/privacyWebView"
+        android:id="@+id/mainWebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/karper_beige"

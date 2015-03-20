@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -59,6 +60,9 @@ public class RegisterActivity extends Activity implements SignUpCallback {
             if(!email.equals("")){
                 if(!password.equals("")){
                     overlay.setVisibility(View.VISIBLE);
+                    TextView activeText = (TextView) findViewById(R.id.active_with_text);
+                    activeText.setText(getString(R.string.action_register));
+
                     ParseUser parseUser = new ParseUser();
                     parseUser.setUsername(name);
                     parseUser.setEmail(email);
@@ -100,12 +104,5 @@ public class RegisterActivity extends Activity implements SignUpCallback {
             new KarperDialog(this, getString(R.string.register_failed), getString(R.string.register_failed_text));
             Log.e("Parse","Register unsuccessful: "+e.getMessage());
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        startActivity(loginIntent);
-        finish();
     }
 }

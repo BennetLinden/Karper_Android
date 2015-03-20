@@ -31,5 +31,48 @@
     <string name="empty_name">Geen naam</string>
 
     <string name="register_title">Aanmelden</string>
+    <string name="title_login">Login</string>
+    <string name="title_forgot">Wachtwoord Vergeten</string>
+
+    <string name="category">Categorie </string>
+    <string name="allowed">Toegestaan</string>
+    <string name="allowed_unspecified">Toegestaan, ongespecificeerd</string>
+    <string name="not_allowed">Niet toegestaan</string>
+    <string name="boat_electric">Elektrische boot, </string>
+    <string name="boat_fuel">Benzine boot, </string>
+    <string name="boat_row">Roeiboot, </string>
+    <string name="boat_feeding">Voerboot</string>
+    <string name="licence_online">Online verkrijgbaar</string>
+    <string name="licence_not_online">Niet online verkrijgbaar</string>
+    <string name="department">Departement</string>
+    <string name="water">Water</string>
+    <string name="ok">OK</string>
+
+    <string name="city">Stad</string>
+    <string name="area">Hectare</string>
+    <string name="night_fishing">Nachtvissen</string>
+    <string name="boat">Boot</string>
+    <string name="licence">Vergunning</string>
+    <string name="lorem_ipsum">lorem ipsum</string>
+
+    <string name="drawer_title_home">Home</string>
+    <string name="drawer_title_search">Zoeken</string>
+    <string name="drawer_title_help">Help</string>
+    <string name="drawer_title_privacy">Privacy</string>
+    <string name="drawer_title_logout">Uitloggen</string>
+
+    <string name="label_description">Omschrijving:</string>
+    <string name="label_information">Infomatie:</string>
+    <string name="label_type">Type:</string>
+    <string name="label_department">Departement: </string>
+    <string name="label_city">Stad: </string>
+
+    <string name="action_logging_in">Aan het inloggen</string>
+    <string name="action_logging_in_facebook">Aan het inloggen met Facebook</string>
+    <string name="action_sending_email">Versturen e-mail</string>
+    <string name="action_register">Aanmelden</string>
+    <string name="action_loading_data">Laden gegevens</string>
+    <string name="action_searching">Zoeken naar: </string>
+
 
 </resources>

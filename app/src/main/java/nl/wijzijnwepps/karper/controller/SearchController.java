@@ -54,7 +54,7 @@ public class SearchController {
                     }
                 }
             } catch (NullPointerException npe){
-                Log.i("search","npe");
+                //Necessary for the loop. The data is not perfect
             }
         }
         EventBus.getDefault().post(new ItemsFoundEvent(results));

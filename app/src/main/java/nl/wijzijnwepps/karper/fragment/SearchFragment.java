@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import de.greenrobot.event.EventBus;
 import nl.wijzijnwepps.karper.R;
@@ -30,6 +31,7 @@ public class SearchFragment extends Fragment {
     private ListView resultList;
     private EditText searchInput;
     private RelativeLayout overlay;
+    private TextView activeText;
 
     @Override
     public void onResume() {
@@ -50,6 +52,8 @@ public class SearchFragment extends Fragment {
 
         overlay = (RelativeLayout) rootView.findViewById(R.id.overlay);
         overlay.setVisibility(View.GONE);
+
+        activeText = (TextView) rootView.findViewById(R.id.active_with_text);
 
         resultList = (ListView) rootView.findViewById(R.id.result_list);
         resultList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,6 +80,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 overlay.setVisibility(View.VISIBLE);
+                activeText.setText(getActivity().getString(R.string.action_searching) + searchInput.getText().toString());
                 SearchController.getInstance(getActivity()).search(searchInput.getText().toString());
             }
         });

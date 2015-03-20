@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:text="Name"
+        android:text="@string/name"
         android:layout_toRightOf="@id/department_number"
         android:layout_centerVertical="true" />
 

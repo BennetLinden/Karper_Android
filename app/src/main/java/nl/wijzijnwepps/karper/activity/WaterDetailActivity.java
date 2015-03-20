@@ -62,39 +62,39 @@ public class WaterDetailActivity extends Activity {
         hectareView.setText(water.getHectare());
 
         TextView categoryView = (TextView) findViewById(R.id.category);
-        categoryView.setText("Categorie "+water.getCategorie());
+        categoryView.setText(getString(R.string.category)+water.getCategorie());
 
         TextView nightView = (TextView) findViewById(R.id.night);
-        if(water.isNachtvissenToegestaan()) nightView.setText("Toegestaan");
-        else nightView.setText("Niet toegestaan");
+        if(water.isNachtvissenToegestaan()) nightView.setText(getString(R.string.allowed));
+        else nightView.setText(getString(R.string.not_allowed));
 
         TextView boatView = (TextView) findViewById(R.id.boat);
         String boatText = "";
         Boolean boatSpecified = false;
         if(water.isElectrischeBoot()){
-            boatText += "Elektrische boot, ";
+            boatText += getString(R.string.boat_electric);
             boatSpecified = true;
         }
         if(water.isBenzineBoot()){
-            boatText += "Benzine boot, ";
+            boatText += getString(R.string.boat_fuel);
             boatSpecified = true;
         }
         if(water.isRoeiboot()){
-            boatText += "Roeiboot, ";
+            boatText += getString(R.string.boat_row);
             boatSpecified = true;
         }
         if(water.isVoerboot()){
-            boatText += "Voerboot";
+            boatText += getString(R.string.boat_feeding);
             boatSpecified = true;
         }
 
         if(boatSpecified) boatView.setText(boatText);
-        else if(water.isBootToegestaan()) boatView.setText("Toegestaan, ongespecificeerd");
-        else boatView.setText("Niet toegestaan");
+        else if(water.isBootToegestaan()) boatView.setText(getString(R.string.allowed_unspecified));
+        else boatView.setText(getString(R.string.not_allowed));
 
         TextView onlineView = (TextView) findViewById(R.id.online);
-        if(water.isVergunningOnlineVerkrijgbaar()) onlineView.setText("Online verkrijgbaar");
-        else onlineView.setText("Niet online verkrijgbaar");
+        if(water.isVergunningOnlineVerkrijgbaar()) onlineView.setText(getString(R.string.licence_online));
+        else onlineView.setText(getString(R.string.licence_not_online));
 
         TextView beschrijving = (TextView) findViewById(R.id.description);
         beschrijving.setText(water.getBeschrijving());

@@ -12,13 +12,23 @@
         android:background="@color/karper_brown"/>
 
     <TextView
-        android:id="@+id/search_item_type"
+        android:id="@+id/search_item_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_margin="5dp"
         android:layout_marginBottom="5dp"
-        android:text="Type" />
+        android:text="@string/label_type" />
+
+    <TextView
+        android:id="@+id/search_item_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/search_item_type_label"
+        android:text="@string/department" />
 
     <TextView
         android:id="@+id/search_item_name"
@@ -26,7 +36,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:text="Name"
+        android:text="@string/name"
         android:layout_below="@id/search_item_type"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"/>
@@ -37,7 +47,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
-        android:text="Departement: "
+        android:text="@string/label_department"
         android:layout_below="@id/search_item_name"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"/>
@@ -47,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Dept"
+        android:text="@string/name"
         android:layout_toRightOf="@id/search_item_dept_label"
         android:layout_alignTop="@id/search_item_dept_label"
         android:layout_marginLeft="5dp"
@@ -59,7 +69,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold"
-        android:text="Stad: "
+        android:text="@string/label_city"
         android:layout_below="@id/search_item_dept_label"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"/>
@@ -69,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Stad"
+        android:text="@string/city"
         android:layout_toRightOf="@id/search_item_city_label"
         android:layout_alignTop="@id/search_item_city_label"
         android:layout_marginLeft="5dp"
