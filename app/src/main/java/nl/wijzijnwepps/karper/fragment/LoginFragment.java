@@ -3,6 +3,7 @@ package nl.wijzijnwepps.karper.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.facebook.widget.LoginButton;
 import com.parse.LogInCallback;
@@ -32,6 +34,7 @@ public class LoginFragment extends Fragment implements LogInCallback {
     private String email, password;
     private SecurePreferencesHelper helper;
     private RelativeLayout overlay;
+    private TextView forgotPassword;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -71,6 +74,17 @@ public class LoginFragment extends Fragment implements LogInCallback {
         facebookButton.setReadPermissions(Arrays.asList("public_profile"));
         facebookButton.setFragment(this);
 
+        forgotPassword = (TextView) view.findViewById(R.id.forgot);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .add(android.R.id.content, new ForgotPasswordFragment())
+                        .addToBackStack("ForgotPasswordFragment")
+                        .commit();
+            }
+        });
+
         return view;
     }
 
@@ -83,10 +97,10 @@ public class LoginFragment extends Fragment implements LogInCallback {
                 ParseUser.logInInBackground(email,password,this);
                 overlay.setVisibility(View.VISIBLE);
             } else {
-                new KarperDialog(getActivity(),"Leeg wachtwoord", "Het wachtwoord mag niet leeg zijn");
+                new KarperDialog(getActivity(),getActivity().getString(R.string.empty_password), getActivity().getString(R.string.empty_password_text));
             }
         } else {
-            new KarperDialog(getActivity(),"Geen emailadres", "Vul aub een geldig emailadres in");
+            new KarperDialog(getActivity(),getActivity().getString(R.string.empty_email), getActivity().getString(R.string.empty_email_text));
         }
     }
 
@@ -117,7 +131,7 @@ public class LoginFragment extends Fragment implements LogInCallback {
             helper.putString("password",password);
         } else {
             // Signup failed. Look at the ParseException to see what happened.
-            new KarperDialog(getActivity(), "Login mislukt", e.getMessage());
+            new KarperDialog(getActivity(), getActivity().getString(R.string.login_failed), getActivity().getString(R.string.login_failed_text));
             Log.e("Parse","Login unsuccessful: "+e.getMessage());
         }
     }

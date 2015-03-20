@@ -31,7 +31,7 @@ public class RegisterActivity extends Activity implements SignUpCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        getActionBar().setTitle("Aanmelden");
+        getActionBar().setTitle(getString(R.string.register_title));
 
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);
@@ -66,13 +66,13 @@ public class RegisterActivity extends Activity implements SignUpCallback {
 
                     parseUser.signUpInBackground(this);
                 } else {
-                    new KarperDialog(this,"Leeg wachtwoord", "Het wachtwoord mag niet leeg zijn");
+                    new KarperDialog(this,getString(R.string.empty_password),getString(R.string.empty_password_text));
                 }
             } else {
-                new KarperDialog(this,"Geen emailadres", "Vul aub een geldig emailadres in");
+                new KarperDialog(this,getString(R.string.empty_email), getString(R.string.empty_email_text));
             }
         } else {
-            new KarperDialog(this,"Geen naam", "Vul aub een gebruikersnaam in");
+            new KarperDialog(this,getString(R.string.empty_name), getString(R.string.empty_name_text));
         }
     }
 
@@ -97,7 +97,7 @@ public class RegisterActivity extends Activity implements SignUpCallback {
         } else {
             // Sign up didn't succeed. Look at the ParseException
             // to figure out what went wrong
-            new KarperDialog(this, "Login mislukt", e.getMessage());
+            new KarperDialog(this, getString(R.string.register_failed), getString(R.string.register_failed_text));
             Log.e("Parse","Register unsuccessful: "+e.getMessage());
         }
     }

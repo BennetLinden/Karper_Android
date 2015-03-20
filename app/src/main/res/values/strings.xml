@@ -5,13 +5,31 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Closed</string>
     <string name="action_search">Zoek</string>
-    <string name="disagree">I DISAGREE</string>
-    <string name="agree">I AGREE</string>
+    <string name="disagree">AFWIJZEN</string>
+    <string name="agree">AKKOORD</string>
     <string name="name">Naam</string>
     <string name="email">E-mailadres</string>
     <string name="password">Wachtwoord</string>
     <string name="login">LOGIN</string>
     <string name="app_id">1555786221344482</string>
     <string name="register">Aanmelden</string>
+    <string name="reset">RESET</string>
+    <string name="success">Succes</string>
+    <string name="fail">Mislukt</string>
+    <string name="email_sent">Er is u een email toegestuurd om uw wachtwoord te veranderen.</string>
+    <string name="email_not_sent">Er iets mis gegaan. Heeft u uw e-mailadres juist ingevoerd?</string>
+    <string name="login_failed">Login mislukt</string>
+    <string name="login_failed_text">Onjuiste combinatie van gebruikersnaam en wachtwoord.</string>
+    <string name="register_failed">Aanmelden mislukt</string>
+    <string name="register_failed_text">Heeft u een geldig e-mailadres opgegeven? Of bestaat er al een account met dit e-mailadres?</string>
+
+    <string name="empty_password">Leeg wachtwoord</string>
+    <string name="empty_password_text">Het wachtwoord mag niet leeg zijn</string>
+    <string name="empty_email">Geen emailadres</string>
+    <string name="empty_email_text">Vul aub een geldig emailadres in</string>
+    <string name="empty_name_text">Vul aub een gebruikersnaam in</string>
+    <string name="empty_name">Geen naam</string>
+
+    <string name="register_title">Aanmelden</string>
 
 </resources>
