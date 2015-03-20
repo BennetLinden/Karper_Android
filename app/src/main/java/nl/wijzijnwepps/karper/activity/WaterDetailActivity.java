@@ -68,7 +68,7 @@ public class WaterDetailActivity extends Activity {
         hectareView.setText(water.getHectare());
 
         TextView categoryView = (TextView) findViewById(R.id.category);
-        categoryView.setText(getString(R.string.category)+water.getCategorie());
+        categoryView.setText(getString(R.string.category)+" "+water.getCategorie());
 
         TextView nightView = (TextView) findViewById(R.id.night);
         if(water.isNachtvissenToegestaan()) nightView.setText(getString(R.string.allowed));
@@ -111,7 +111,8 @@ public class WaterDetailActivity extends Activity {
             public void onClick(View view) {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                         "mailto", getString(R.string.feedback_email_address), null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback: "+department.getName()+", "+water.getCity()+", "+water.getName());
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Departement: "+department.getName()+"\nStad: "+water.getCity()+"\nWater: "+water.getName());
                 startActivity(Intent.createChooser(emailIntent, getString(R.string.title_send_feedback_with)));
             }
         });

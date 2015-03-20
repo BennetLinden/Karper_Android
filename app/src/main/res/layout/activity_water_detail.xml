@@ -54,9 +54,17 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/water_image"
+        android:src="@drawable/img_water_landscape"
+        android:layout_below="@id/icons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
+
     <TextView
         android:id="@+id/title_info"
-        android:layout_below="@id/icons"
+        android:layout_below="@id/water_image"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -194,6 +202,7 @@
         </TableRow>
 
         <TableRow
+            android:visibility="gone"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
