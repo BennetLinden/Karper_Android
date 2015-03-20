@@ -1,10 +1,13 @@
 package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -101,6 +104,17 @@ public class WaterDetailActivity extends Activity {
 
         TextView beschrijving = (TextView) findViewById(R.id.description);
         beschrijving.setText(water.getBeschrijving());
+
+        Button feedbackButton = (Button) findViewById(R.id.button_feedback);
+        feedbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", getString(R.string.feedback_email_address), null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback: "+department.getName()+", "+water.getCity()+", "+water.getName());
+                startActivity(Intent.createChooser(emailIntent, getString(R.string.title_send_feedback_with)));
+            }
+        });
     }
 
     @Override

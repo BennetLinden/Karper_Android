@@ -73,6 +73,8 @@
     <string name="action_register">Aanmelden</string>
     <string name="action_loading_data">Laden gegevens</string>
     <string name="action_searching">Zoeken naar: </string>
+    <string name="feedback_email_address">abc@gmail.com</string>
+    <string name="title_send_feedback_with"></string>
 
 
 </resources>

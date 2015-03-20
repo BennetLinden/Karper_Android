@@ -13,6 +13,7 @@
         android:name=".Application">
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+        <meta-data android:name="com.parse.push.gcm_sender_id"   android:value="id:YOUR_SENDER_ID" />
 
         <activity
             android:name=".activity.LoginActivity"

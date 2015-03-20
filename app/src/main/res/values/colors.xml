@@ -22,4 +22,7 @@
     <color name="overlay">#AA000000</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="feedback_rood_top">#B06D6E</color>
+    <color name="feedback_rood_bot">#752223</color>
+
 </resources>

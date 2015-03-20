@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="5dp"/>
+            <gradient android:angle="270"
+                android:startColor="@color/feedback_rood_top"
+                android:endColor="@color/feedback_rood_bot"/>
+        </shape>
+    </item>
+
+</selector>
