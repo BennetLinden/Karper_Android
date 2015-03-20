@@ -15,7 +15,8 @@ import nl.wijzijnwepps.karper.R;
  */
 public class DisclaimerActivity extends Activity {
 
-    Button agree, disagree;
+    private Button agree, disagree;
+    private SecurePreferencesHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +26,15 @@ public class DisclaimerActivity extends Activity {
         agree = (Button) findViewById(R.id.agree);
         disagree = (Button) findViewById(R.id.disagree);
 
+        helper = new SecurePreferencesHelper(DisclaimerActivity.this);
+
         agree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DisclaimerActivity.this,MainActivity.class);
                 startActivity(intent);
-                SecurePreferencesHelper securePreferencesHelper = new SecurePreferencesHelper(DisclaimerActivity.this);
-                securePreferencesHelper.putBoolean("disclaimerAgreed", true);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                helper.putBoolean("disclaimerAgreed", true);
             }
         });
 
@@ -39,7 +42,10 @@ public class DisclaimerActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DisclaimerActivity.this,LoginActivity.class);
+                helper.putBoolean("autoLogin", false);
+                helper.putBoolean("facebookLogin",false);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 finish();
             }
         });

@@ -27,7 +27,7 @@ public class LoginActivity extends Activity implements LogInCallback {
     private RelativeLayout overlay;
     private TextView forgotPassword;
     private boolean facebookLogin = false;
-
+    private TextView activeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class LoginActivity extends Activity implements LogInCallback {
         passwordField = (EditText) findViewById(R.id.passwordField);
 
         overlay = (RelativeLayout) findViewById(R.id.overlay);
+        activeText = (TextView) findViewById(R.id.active_with_text);
 
         helper = new SecurePreferencesHelper(this);
         emailField.setText(helper.getString("username",""));
@@ -47,6 +48,7 @@ public class LoginActivity extends Activity implements LogInCallback {
         if(helper.getBoolean("autoLogin",false)){
             if(helper.getBoolean("facebookLogin",false)) {
                 overlay.setVisibility(View.VISIBLE);
+                activeText.setText(getString(R.string.action_logging_in_facebook));
                 ParseFacebookUtils.logIn(LoginActivity.this,LoginActivity.this);
                 facebookLogin = true;
             }
@@ -75,7 +77,6 @@ public class LoginActivity extends Activity implements LogInCallback {
             @Override
             public void onClick(View view) {
                 overlay.setVisibility(View.VISIBLE);
-                TextView activeText = (TextView) findViewById(R.id.active_with_text);
                 activeText.setText(getString(R.string.action_logging_in_facebook));
                 ParseFacebookUtils.logIn(LoginActivity.this,LoginActivity.this);
                 facebookLogin = true;
@@ -120,6 +121,7 @@ public class LoginActivity extends Activity implements LogInCallback {
             intent = new Intent(this,DisclaimerActivity.class);
         }
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         finish();
     }
 

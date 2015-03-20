@@ -50,7 +50,7 @@
     <string name="ok">OK</string>
 
     <string name="city">City</string>
-    <string name="area">Area</string>
+    <string name="area">Area (hectare)</string>
     <string name="night_fishing">Night fishing</string>
     <string name="boat">Boat</string>
     <string name="licence">Licence</string>

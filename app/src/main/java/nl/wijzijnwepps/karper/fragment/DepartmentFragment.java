@@ -26,6 +26,7 @@ public class DepartmentFragment extends Fragment {
     private DepartmentAdapter departmentAdapter;
     private ParallaxListView regionList;
     private RelativeLayout overlay;
+    private TextView activeText;
 
     @Override
     public void onResume() {
@@ -47,7 +48,7 @@ public class DepartmentFragment extends Fragment {
         regionList = (ParallaxListView) rootView.findViewById(R.id.region_list);
         overlay = (RelativeLayout) rootView.findViewById(R.id.overlay);
         overlay.setVisibility(View.VISIBLE);
-        TextView activeText = (TextView) rootView.findViewById(R.id.active_with_text);
+        activeText = (TextView) rootView.findViewById(R.id.active_with_text);
         activeText.setText(getActivity().getString(R.string.action_loading_data));
 
         ImageView france = new ImageView(getActivity());

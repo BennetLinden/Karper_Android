@@ -3,6 +3,7 @@ package nl.wijzijnwepps.karper.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,6 +30,9 @@ public class DepartmentActivity extends Activity {
         departement = (Departement) getIntent().getSerializableExtra("department");
 
         getActionBar().setTitle(departement.getName());
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
         final ListView waterList = (ListView) findViewById(R.id.waterList);
 
         waterAdapter = new WaterAdapter(this, R.layout.list_item_water,departement.getWaters());
@@ -51,4 +55,11 @@ public class DepartmentActivity extends Activity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
+
 }

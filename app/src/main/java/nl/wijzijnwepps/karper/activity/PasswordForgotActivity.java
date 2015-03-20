@@ -2,6 +2,7 @@ package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ public class PasswordForgotActivity extends Activity implements RequestPasswordR
 
     private EditText emailField;
     private RelativeLayout overlay;
+    private TextView activeText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,18 +29,20 @@ public class PasswordForgotActivity extends Activity implements RequestPasswordR
         setContentView(R.layout.activity_forgot_password);
 
         getActionBar().setTitle(getString(R.string.title_forgot));
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         emailField = (EditText) findViewById(R.id.emailField);
 
         overlay = (RelativeLayout) findViewById(R.id.overlay);
         overlay.setVisibility(View.GONE);
+        activeText = (TextView) findViewById(R.id.active_with_text);
 
         Button resetButton = (Button) findViewById(R.id.buttonReset);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 overlay.setVisibility(View.VISIBLE);
-                TextView activeText = (TextView) findViewById(R.id.active_with_text);
                 activeText.setText(getString(R.string.action_sending_email));
                 ParseUser.requestPasswordResetInBackground(emailField.getText().toString(),PasswordForgotActivity.this);
             }
@@ -58,5 +62,17 @@ public class PasswordForgotActivity extends Activity implements RequestPasswordR
             // to see what's up.
             new KarperDialog(this,getString(R.string.fail),getString(R.string.email_not_sent));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }

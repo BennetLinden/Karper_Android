@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class RegisterActivity extends Activity implements SignUpCallback {
 
     private EditText nameField, emailField, passwordField;
     private RelativeLayout overlay;
+    private TextView activeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +35,15 @@ public class RegisterActivity extends Activity implements SignUpCallback {
         setContentView(R.layout.activity_register);
 
         getActionBar().setTitle(getString(R.string.register_title));
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
 
         overlay = (RelativeLayout) findViewById(R.id.overlay);
+        activeText = (TextView) findViewById(R.id.active_with_text);
 
         Button registerButton = (Button) findViewById(R.id.buttonRegister);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +65,6 @@ public class RegisterActivity extends Activity implements SignUpCallback {
             if(!email.equals("")){
                 if(!password.equals("")){
                     overlay.setVisibility(View.VISIBLE);
-                    TextView activeText = (TextView) findViewById(R.id.active_with_text);
                     activeText.setText(getString(R.string.action_register));
 
                     ParseUser parseUser = new ParseUser();
@@ -89,6 +93,7 @@ public class RegisterActivity extends Activity implements SignUpCallback {
             intent = new Intent(this,DisclaimerActivity.class);
         }
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
     //Done signing up on background
@@ -104,5 +109,17 @@ public class RegisterActivity extends Activity implements SignUpCallback {
             new KarperDialog(this, getString(R.string.register_failed), getString(R.string.register_failed_text));
             Log.e("Parse","Register unsuccessful: "+e.getMessage());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }

@@ -20,7 +20,6 @@ public class MainActivity extends Activity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
-
     DrawerFragment drawerFragment;
 
     @Override
@@ -58,6 +57,7 @@ public class MainActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setHomeAsUpIndicator(R.drawable.ic_action_navigation_menu);
     }
 
     /* Called whenever we call invalidateOptionsMenu() */
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         }
         // Handle your other action bar items...
         if(item.getItemId()==R.id.action_search){
-            //Search
+            showSearchView();
         }
 
         return super.onOptionsItemSelected(item);

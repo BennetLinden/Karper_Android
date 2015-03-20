@@ -3,6 +3,7 @@ package nl.wijzijnwepps.karper.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +31,8 @@ public class WaterDetailActivity extends Activity {
         water = (Water) getIntent().getSerializableExtra("water");
 
         getActionBar().setTitle(water.getName());
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         ImageView iconHengels, iconCategorie, iconBoot, iconOnline, iconNight;
         iconHengels = (ImageView) findViewById(R.id.icon_hengels);
@@ -104,5 +107,11 @@ public class WaterDetailActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }
