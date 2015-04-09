@@ -13,6 +13,7 @@
     <string name="login">LOGIN</string>
     <string name="app_id">1555786221344482</string>
     <string name="register">Register</string>
+    <string name="login_facebook">Login with Facebook</string>
     <string name="reset">RESET</string>
     <string name="success">Success</string>
     <string name="fail">Failed</string>
