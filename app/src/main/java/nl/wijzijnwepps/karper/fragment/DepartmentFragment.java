@@ -2,6 +2,7 @@ package nl.wijzijnwepps.karper.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,9 @@ public class DepartmentFragment extends Fragment {
 
         ImageView france = new ImageView(getActivity());
         france.setImageDrawable(getResources().getDrawable(R.drawable.france));
-        france.setBackground(getResources().getDrawable(R.drawable.background_map_gradient));
+        if(Build.VERSION.SDK_INT>16){
+            france.setBackground(getResources().getDrawable(R.drawable.background_map_gradient));
+        }
 
         regionList.addParallaxedHeaderView(france);
         regionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -55,6 +55,7 @@
 <string name="night_fishing">Night fishing</string>
 <string name="boat">Boat</string>
 <string name="licence">Licence</string>
+<string name="feedback_email_address">info@carprules.nl</string>
 <string name="lorem_ipsum">lorem ipsum</string>
 
 <string name="drawer_title_home">Home</string>
@@ -75,5 +76,14 @@
 <string name="action_register">Registering</string>
 <string name="action_loading_data">Loading data</string>
 <string name="action_searching">Searching for: </string>
+<string name="department_water_count">There are %1$d waters this department</string>
+    <string name="general_search_hint">Department, Water or City</string>
+    <string name="department_search_hint">Water or City</string>
+    <string name="cancel">cancel</string>
+    <string name="send_feedback_dialog_title">Send Feedback</string>
+    <string name="send_feedback_dialog_message">Piscari Nox</string>
+    <string name="send_feedback_dialog_button">Send</string>
+    <string name="send_feedback_dialog_thanks_title">Thank You</string>
+    <string name="send_feedback_dialog_thanks_message">Yo thanks</string>
 
 </resources>

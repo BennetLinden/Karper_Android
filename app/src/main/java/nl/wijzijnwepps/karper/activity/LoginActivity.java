@@ -1,20 +1,33 @@
 package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import nl.wijzijnwepps.karper.Application;
 import nl.wijzijnwepps.karper.R;
 import nl.wijzijnwepps.karper.helper.SecurePreferencesHelper;
 import nl.wijzijnwepps.karper.widget.KarperDialog;
@@ -35,6 +48,7 @@ public class LoginActivity extends Activity implements LogInCallback {
 
         setContentView(R.layout.activity_login);
 
+
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
 
@@ -44,6 +58,10 @@ public class LoginActivity extends Activity implements LogInCallback {
         helper = new SecurePreferencesHelper(this);
         emailField.setText(helper.getString("username",""));
         passwordField.setText(helper.getString("password",""));
+
+        if(!isNetworkAvailable() && helper.getBoolean("authenticated",false)){
+            startMainActivity();
+        }
 
         if(helper.getBoolean("autoLogin",false)){
             if(helper.getBoolean("facebookLogin",false)) {
@@ -57,7 +75,7 @@ public class LoginActivity extends Activity implements LogInCallback {
             }
         }
 
-        Button loginButton = (Button) findViewById(R.id.buttonLogin);
+        final Button loginButton = (Button) findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +106,18 @@ public class LoginActivity extends Activity implements LogInCallback {
             @Override
             public void onClick(View view) {
                 startPasswordForgotActivity();
+            }
+        });
+
+        passwordField.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    loginButton.performClick();
+
+                    return true;
+                }
+                return false;
             }
         });
     }
@@ -147,10 +177,14 @@ public class LoginActivity extends Activity implements LogInCallback {
                 helper.putString("username", email);
                 helper.putString("password", password);
             }
+            helper.putBoolean("authenticated", true);
         } else {
             // Signup failed. Look at the ParseException to see what happened.
-            new KarperDialog(this, getString(R.string.login_failed), getString(R.string.login_failed_text));
-            Log.e("Parse", "Login unsuccessful: " + e.getMessage());
+            try {
+                new KarperDialog(this, getString(R.string.login_failed), getString(R.string.login_failed_text));
+            } catch(WindowManager.BadTokenException BTE) {
+                Log.e("Parse", "Login unsuccessful: " + e.getMessage());
+            }
         }
     }
 
@@ -159,4 +193,43 @@ public class LoginActivity extends Activity implements LogInCallback {
         super.onActivityResult(requestCode, resultCode, data);
         ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Get tracker.
+        Tracker t = ((Application) getApplication()).getTracker(
+                Application.TrackerName.APP_TRACKER);
+
+        // Set screen name.
+        t.setScreenName("Login");
+
+        // Send a screen view.
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null;
+    }
+
+//    private boolean hasActiveInternetConnection(Context context) {
+//        if (isNetworkAvailable(context)) {
+//            try {
+//                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
+//                urlc.setRequestProperty("User-Agent", "Test");
+//                urlc.setRequestProperty("Connection", "close");
+//                urlc.setConnectTimeout(1500);
+//                urlc.connect();
+//                return (urlc.getResponseCode() == 200);
+//            } catch (IOException e) {
+//                Log.e("INETCHECK", "Error checking internet connection", e);
+//            }
+//        } else {
+//            Log.d("INETCHECK", "No network available!");
+//        }
+//        return false;
+//    }
 }

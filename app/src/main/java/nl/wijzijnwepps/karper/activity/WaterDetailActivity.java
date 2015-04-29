@@ -1,6 +1,8 @@
 package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,11 +13,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.Locale;
 
+import nl.wijzijnwepps.karper.Application;
 import nl.wijzijnwepps.karper.R;
 import nl.wijzijnwepps.karper.model.Departement;
 import nl.wijzijnwepps.karper.model.Water;
+import nl.wijzijnwepps.karper.widget.KarperDialog;
 
 /**
  * Created by Stephan on 21/01/15.
@@ -109,11 +116,28 @@ public class WaterDetailActivity extends Activity {
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto", getString(R.string.feedback_email_address), null));
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Departement: "+department.getName()+"\nStad: "+water.getCity()+"\nWater: "+water.getName());
-                startActivity(Intent.createChooser(emailIntent, getString(R.string.title_send_feedback_with)));
+                AlertDialog alertDialog = new AlertDialog.Builder(WaterDetailActivity.this).create();
+                alertDialog.setTitle(getString(R.string.send_feedback_dialog_title));
+                alertDialog.setMessage(getString(R.string.send_feedback_dialog_message));
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.send_feedback_dialog_button),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                        "mailto", getString(R.string.feedback_email_address), null));
+                                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+                                emailIntent.putExtra(Intent.EXTRA_TEXT, "Departement: "+department.getName()+"\nStad: "+water.getCity()+"\nWater: "+water.getName());
+                                dialog.dismiss();
+                                startActivityForResult(Intent.createChooser(emailIntent, getString(R.string.title_send_feedback_with)),201);
+                            }
+                        });
+                alertDialog.show();
+
             }
         });
     }
@@ -129,4 +153,26 @@ public class WaterDetailActivity extends Activity {
         onBackPressed();
         return true;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Get tracker.
+        Tracker t = ((Application) getApplication()).getTracker(
+                Application.TrackerName.APP_TRACKER);
+
+        // Set screen name.
+        t.setScreenName("Water");
+        t.set("Water",water.getName() + ", " + water.getCity());
+
+        // Send a screen view.
+        t.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        new KarperDialog(this,getString(R.string.send_feedback_dialog_thanks_title), getString(R.string.send_feedback_dialog_thanks_message));
+    }
 }
+

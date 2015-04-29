@@ -74,7 +74,15 @@
     <string name="action_register">Aanmelden</string>
     <string name="action_loading_data">Laden gegevens</string>
     <string name="action_searching">Zoeken naar: </string>
-    <string name="feedback_email_address">abc@gmail.com</string>
     <string name="title_send_feedback_with"></string>
+    <string name="department_water_count">In dit departement bevinden zich %1$d wateren</string>
+    <string name="general_search_hint">Departement, Water of Gemeente</string>
+    <string name="department_search_hint">Water of Gemeente</string>
+    <string name="cancel">cancel</string>
+    <string name="send_feedback_dialog_title">Zend Feedback</string>
+    <string name="send_feedback_dialog_message">CarpRules probeert u zo goed mogelijk te voorzien van beschikbare informatie. Heeft u tips, opmerkingen of eventuele aanvullende informatie dan horen wij dit graag van u.</string>
+    <string name="send_feedback_dialog_button">Verzend</string>
+    <string name="send_feedback_dialog_thanks_title">Mail verstuurd</string>
+    <string name="send_feedback_dialog_thanks_message">Hartelijk dank voor uw reactie. Wij nemen alle reacties van onze gebruikers zeer serieus en gaan ermee aan de slag. Op deze manier kunnen we samen een duidelijk beeld scheppen betreft de regelgeving in Frankrijk. Vang ze!!</string>
 
 </resources>

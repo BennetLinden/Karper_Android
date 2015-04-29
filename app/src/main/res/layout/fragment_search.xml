@@ -18,6 +18,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/background_input"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:hint="@string/general_search_hint"
             android:layout_margin="5dp"
             android:paddingLeft="10dp"
             android:layout_weight="5"/>

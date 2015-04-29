@@ -35,7 +35,7 @@ public class SearchController {
     public void search(String query) {
         results.clear();
         for(Departement dept : DepartementController.getInstance(context).getDepartments()){
-            if(dept.getName().contains(query)) {
+            if(dept.getName().toLowerCase().contains(query.toLowerCase())) {
                 SearchItem searchItem = new SearchItem();
                 searchItem.setType(SearchItem.Type.DEPARTMENT);
                 searchItem.setDepartement(dept);
@@ -44,7 +44,7 @@ public class SearchController {
 
             try {
                 for(Water water : dept.getWaters()){
-                    if(water.getName().contains(query) || water.getCity().contains(query)){
+                    if(water.getName().toLowerCase().contains(query.toLowerCase()) || water.getCity().toLowerCase().contains(query.toLowerCase())){
                         SearchItem searchItem = new SearchItem();
                         searchItem.setType(SearchItem.Type.WATER);
                         searchItem.setDepartement(dept);

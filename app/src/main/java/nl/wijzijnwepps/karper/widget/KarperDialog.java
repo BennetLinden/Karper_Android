@@ -11,7 +11,7 @@ import nl.wijzijnwepps.karper.R;
  */
 public class KarperDialog {
 
-    public KarperDialog(Context context, String title, String message){
+    public KarperDialog(Context context, String title, String message) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);

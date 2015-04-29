@@ -3,9 +3,11 @@ package nl.wijzijnwepps.karper.fragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,7 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import de.greenrobot.event.EventBus;
+import nl.wijzijnwepps.karper.Application;
 import nl.wijzijnwepps.karper.R;
 import nl.wijzijnwepps.karper.activity.DepartmentActivity;
 import nl.wijzijnwepps.karper.activity.WaterDetailActivity;
@@ -32,6 +38,7 @@ public class SearchFragment extends Fragment {
     private EditText searchInput;
     private RelativeLayout overlay;
     private TextView activeText;
+    private ImageView searchButton;
 
     @Override
     public void onResume() {
@@ -75,13 +82,35 @@ public class SearchFragment extends Fragment {
         });
 
         searchInput = (EditText) rootView.findViewById(R.id.search_field);
-        final ImageView searchButton = (ImageView) rootView.findViewById(R.id.search_button);
+        searchButton = (ImageView) rootView.findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 overlay.setVisibility(View.VISIBLE);
                 activeText.setText(getActivity().getString(R.string.action_searching) + searchInput.getText().toString());
                 SearchController.getInstance(getActivity()).search(searchInput.getText().toString());
+
+                // Get tracker.
+                Tracker t = ((Application) getActivity().getApplication()).getTracker(
+                        Application.TrackerName.APP_TRACKER);
+
+                // Set screen name.
+                t.setScreenName("Search");
+                t.set("Term", searchInput.getText().toString());
+
+                // Send a screen view.
+                t.send(new HitBuilders.ScreenViewBuilder().build());
+            }
+        });
+
+        searchInput.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    searchButton.performClick();
+                    return true;
+                }
+                return false;
             }
         });
 

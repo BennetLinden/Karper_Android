@@ -2,6 +2,7 @@ package nl.wijzijnwepps.karper.activity;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -58,7 +59,9 @@ public class MainActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setHomeAsUpIndicator(R.drawable.ic_action_navigation_menu);
+        if(Build.VERSION.SDK_INT>18) {
+            getActionBar().setHomeAsUpIndicator(R.drawable.ic_action_navigation_menu);
+        }
     }
 
     /* Called whenever we call invalidateOptionsMenu() */

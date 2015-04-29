@@ -5,10 +5,83 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
+    <RelativeLayout
+        android:id="@+id/titlebox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_searchbar">
+
+        <TextView
+            android:id="@+id/department_number"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:text="1"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/karper_brown"
+            android:background="@drawable/icon_france" />
+
+        <TextView
+            android:id="@+id/department_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/department_number"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Ain"/>
+
+        <TextView
+            android:id="@+id/department_descr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/department_name"
+            android:layout_toRightOf="@id/department_number"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:text="@string/department_water_count"/>
+        </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/searchbar"
+        android:visibility="visible"
+        android:layout_below="@id/titlebox"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:orientation="horizontal"
+        android:background="@drawable/background_searchbar">
+
+        <EditText
+            android:id="@+id/search_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_input"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:hint="@string/department_search_hint"
+            android:layout_margin="5dp"
+            android:paddingLeft="10dp"
+            android:layout_weight="5"/>
+
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_agree"
+            android:layout_margin="5dp"
+            android:src="@android:drawable/ic_menu_search"/>
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/waterList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/searchbar"
         android:divider="@color/karper_brown"
         android:dividerHeight="1dp"
         />

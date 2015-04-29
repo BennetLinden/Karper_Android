@@ -51,7 +51,7 @@ public class ParseDepartmentJSONTask extends AsyncTask<Void,Void,ArrayList<Depar
                 }
                 if(!exists){
                     dept = new Departement(entry.optInt("Nr"),entry.getString("Departement"));
-                    departments.add(dept);
+                    if(dept.getID()!=0) departments.add(dept);
                 }
 
                 //Parse the water

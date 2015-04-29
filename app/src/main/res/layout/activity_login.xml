@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
-    android:background="@color/background_login"
+    android:background="@drawable/background_login"
     android:focusableInTouchMode="true">
 
     <ImageView
@@ -29,7 +29,8 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:hint="@string/email"
-        android:layout_below="@id/two_fish" />
+        android:layout_below="@id/two_fish"
+        android:imeOptions="actionNext"/>
 
     <EditText
         android:id="@+id/passwordField"
@@ -46,7 +47,8 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_below="@+id/emailField"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:imeOptions="actionSend"/>
 
     <Button
         android:id="@+id/buttonLogin"
