@@ -68,9 +68,10 @@ public class RegisterActivity extends Activity implements SignUpCallback {
                     activeText.setText(getString(R.string.action_register));
 
                     ParseUser parseUser = new ParseUser();
-                    parseUser.setUsername(name);
+                    parseUser.setUsername(email);
                     parseUser.setEmail(email);
                     parseUser.setPassword(password);
+                    parseUser.put("naam",name);
 
                     parseUser.signUpInBackground(this);
                 } else {

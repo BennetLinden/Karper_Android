@@ -29,7 +29,7 @@
     <string name="empty_password_text">The entered password can not be empty</string>
     <string name="empty_email">No e-mail address</string>
     <string name="empty_email_text">Please enter a valid e-mail address</string>
-    <string name="empty_name_text">Please enter a username address</string>
+    <string name="empty_name_text">Please enter a username</string>
     <string name="empty_name">No name</string>
 
     <string name="register_title">Register</string>
@@ -83,6 +83,10 @@
     <string name="send_feedback_dialog_message">Piscari Nox</string>
     <string name="send_feedback_dialog_button">Send</string>
     <string name="send_feedback_dialog_thanks_title">Thank You</string>
-    <string name="send_feedback_dialog_thanks_message">Yo thanks</string>
+    <string name="send_feedback_dialog_thanks_message">We appreciate the feedback our users send us.</string>
+
+    <string name="feedback_email_address">info@carprules.nl</string>
+
+    <string name="title_send_feedback_with">E-mail application</string>
 
 </resources>

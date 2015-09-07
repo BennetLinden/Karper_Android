@@ -7,6 +7,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
+import com.parse.ParseUser;
+
 import nl.wijzijnwepps.karper.helper.SecurePreferencesHelper;
 import nl.wijzijnwepps.karper.R;
 
@@ -35,6 +37,9 @@ public class DisclaimerActivity extends Activity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 helper.putBoolean("disclaimerAgreed", true);
+                ParseUser parseUser = ParseUser.getCurrentUser();
+                parseUser.put("disclaimer",true);
+                parseUser.saveInBackground();
             }
         });
 

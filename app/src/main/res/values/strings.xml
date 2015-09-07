@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<string name="app_name">CarpRules</string>
-<string name="drawer_open">Drawer Open</string>
-<string name="drawer_close">Drawer Closed</string>
-<string name="action_search">Search</string>
-<string name="disagree">I DISAGREE</string>
-<string name="agree">I AGREE</string>
-<string name="name">Name</string>
-<string name="email">E-mail address</string>
-<string name="password">Password</string>
-<string name="login">LOGIN</string>
-<string name="app_id">1555786221344482</string>
-<string name="register">Register</string>
-<string name="login_facebook">Login with Facebook</string>
-<string name="reset">RESET</string>
-<string name="success">Success</string>
-<string name="fail">Failed</string>
-<string name="email_sent">An e-mail has been sent with which you can change your password.</string>
-<string name="email_not_sent">Something went wrong. Did you enter your e-mail address correctly?</string>
+    <string name="app_name">CarpRules</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Closed</string>
+    <string name="action_search">Search</string>
+    <string name="disagree">I DISAGREE</string>
+    <string name="agree">I AGREE</string>
+    <string name="name">Name</string>
+    <string name="email">E-mail address</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="app_id">1555786221344482</string>
+    <string name="register">Register</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="reset">RESET</string>
+    <string name="success">Success</string>
+    <string name="fail">Failed</string>
+    <string name="email_sent">An e-mail has been sent with which you can change your password.</string>
+    <string name="email_not_sent">Something went wrong. Did you enter your e-mail address correctly?</string>
 
-<string name="login_failed">Login failled</string>
-<string name="login_failed_text">Incorrect combination of username and password.</string>
-<string name="register_failed">Registering failed</string>
-<string name="register_failed_text">Did you enter a valid e-mail address? Or does an account already exist with this e-mail address?</string>
+    <string name="login_failed">Login failled</string>
+    <string name="login_failed_text">Incorrect combination of username and password.</string>
+    <string name="register_failed">Registering failed</string>
+    <string name="register_failed_text">Did you enter a valid e-mail address? Or does an account already exist with this e-mail address?</string>
 
-<string name="empty_password">No password</string>
-<string name="empty_password_text">The entered password can not be empty</string>
-<string name="empty_email">No e-mail address</string>
-<string name="empty_email_text">Please enter a valid e-mail address</string>
-<string name="empty_name_text">Please enter a username address</string>
-<string name="empty_name">No name</string>
+    <string name="empty_password">No password</string>
+    <string name="empty_password_text">The entered password can not be empty</string>
+    <string name="empty_email">No e-mail address</string>
+    <string name="empty_email_text">Please enter a valid e-mail address</string>
+    <string name="empty_name_text">Please enter a username</string>
+    <string name="empty_name">No name</string>
 
-<string name="register_title">Register</string>
-<string name="title_login">Login</string>
-<string name="title_forgot">Forgot Password</string>
+    <string name="register_title">Register</string>
+    <string name="title_login">Login</string>
+    <string name="title_forgot">Forgot Password</string>
 
-<string name="category">Category </string>
-<string name="allowed">Allowed</string>
-<string name="allowed_unspecified">Allowed, unspecified</string>
-<string name="not_allowed">Not Allowed</string>
-<string name="boat_electric">Electric boat, </string>
-<string name="boat_fuel">Fueled boat, </string>
-<string name="boat_row">Rowing boat, </string>
-<string name="boat_feeding">Feeding boat</string>
-<string name="licence_online">Online available</string>
-<string name="licence_not_online">Not online available</string>
-<string name="department">Department</string>
-<string name="water">Water</string>
-<string name="ok">OK</string>
+    <string name="category">Category </string>
+    <string name="allowed">Allowed</string>
+    <string name="allowed_unspecified">Allowed, unspecified</string>
+    <string name="not_allowed">Not Allowed</string>
+    <string name="boat_electric">Electric boat, </string>
+    <string name="boat_fuel">Fueled boat, </string>
+    <string name="boat_row">Rowing boat, </string>
+    <string name="boat_feeding">Feeding boat</string>
+    <string name="licence_online">Online available</string>
+    <string name="licence_not_online">Not online available</string>
+    <string name="department">Department</string>
+    <string name="water">Water</string>
+    <string name="ok">OK</string>
 
-<string name="city">City</string>
-<string name="area">Area (hectare)</string>
-<string name="night_fishing">Night fishing</string>
-<string name="boat">Boat</string>
-<string name="licence">Licence</string>
-<string name="feedback_email_address">info@carprules.nl</string>
-<string name="lorem_ipsum">lorem ipsum</string>
+    <string name="city">City</string>
+    <string name="area">Area (hectare)</string>
+    <string name="night_fishing">Night fishing</string>
+    <string name="boat">Boat</string>
+    <string name="licence">Licence</string>
+    <string name="feedback_email_address">info@carprules.nl</string>
+    <string name="lorem_ipsum">lorem ipsum</string>
 
-<string name="drawer_title_home">Home</string>
-<string name="drawer_title_search">Search</string>
-<string name="drawer_title_help">Help</string>
-<string name="drawer_title_privacy">Privacy</string>
-<string name="drawer_title_logout">Log out</string>
+    <string name="drawer_title_home">Home</string>
+    <string name="drawer_title_search">Search</string>
+    <string name="drawer_title_help">Help</string>
+    <string name="drawer_title_privacy">Privacy</string>
+    <string name="drawer_title_logout">Log out</string>
 
-<string name="label_information">Information:</string>
-<string name="label_description">Description:</string>
-<string name="label_type">Type:</string>
-<string name="label_department">Department: </string>
-<string name="label_city">City: </string>
+    <string name="label_information">Information:</string>
+    <string name="label_description">Description:</string>
+    <string name="label_type">Type:</string>
+    <string name="label_department">Department: </string>
+    <string name="label_city">City: </string>
 
-<string name="action_logging_in">Logging in</string>
-<string name="action_logging_in_facebook">Logging in with Facebook</string>
-<string name="action_sending_email">Sending e-mail</string>
-<string name="action_register">Registering</string>
-<string name="action_loading_data">Loading data</string>
-<string name="action_searching">Searching for: </string>
-<string name="department_water_count">There are %1$d waters this department</string>
+    <string name="action_logging_in">Logging in</string>
+    <string name="action_logging_in_facebook">Logging in with Facebook</string>
+    <string name="action_sending_email">Sending e-mail</string>
+    <string name="action_register">Registering</string>
+    <string name="action_loading_data">Loading data</string>
+    <string name="action_searching">Searching for: </string>
+    <string name="department_water_count">There are %1$d waters this department</string>
     <string name="general_search_hint">Department, Water or City</string>
     <string name="department_search_hint">Water or City</string>
     <string name="cancel">cancel</string>
@@ -84,6 +84,8 @@
     <string name="send_feedback_dialog_message">Piscari Nox</string>
     <string name="send_feedback_dialog_button">Send</string>
     <string name="send_feedback_dialog_thanks_title">Thank You</string>
-    <string name="send_feedback_dialog_thanks_message">Yo thanks</string>
+    <string name="send_feedback_dialog_thanks_message">We appreciate the feedback our users send us.</string>
+
+    <string name="title_send_feedback_with">E-mail application</string>
 
 </resources>
