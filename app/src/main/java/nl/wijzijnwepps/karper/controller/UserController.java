@@ -17,7 +17,7 @@ public class UserController {
     private Context context;
     private static UserController instance = null;
 
-    public static UserController getInstance(Context context){
+    public synchronized static UserController getInstance(Context context){
         if(instance==null){
             instance = new UserController(context);
         }

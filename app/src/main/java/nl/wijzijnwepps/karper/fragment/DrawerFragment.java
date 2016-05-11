@@ -2,6 +2,7 @@ package nl.wijzijnwepps.karper.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +68,15 @@ public class DrawerFragment extends Fragment {
                 Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(loginIntent);
                 getActivity().finish();
+            }
+        });
+
+        TextView linkWepps = (TextView) rootView.findViewById(R.id.link_wepps);
+        linkWepps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.wijzijnwepps.nl"));
+                startActivity(browserIntent);
             }
         });
 

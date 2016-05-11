@@ -1,17 +1,11 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /Applications/Android Studio.app/sdk/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Keeping Parse. For now, because parse will stop
+-dontwarn com.parse.**
 
-# Add any project specific keep options here:
+# Keep EventBus functioning: https://github.com/greenrobot/EventBus/issues/6
+-keepclassmembers class ** {
+    public void onEvent(**);
+}
+-keepclassmembers class ** {
+    public void onEventMainThread(**);
+}
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CarpRules</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Closed</string>
     <string name="action_search">Search</string>
@@ -11,7 +10,6 @@
     <string name="email">E-mail address</string>
     <string name="password">Password</string>
     <string name="login">LOGIN</string>
-    <string name="app_id">1555786221344482</string>
     <string name="register">Register</string>
     <string name="login_facebook">Login with Facebook</string>
     <string name="reset">RESET</string>

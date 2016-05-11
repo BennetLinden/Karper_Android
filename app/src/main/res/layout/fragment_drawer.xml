@@ -102,9 +102,10 @@
     </ScrollView>
 
     <TextView
+        android:id="@+id/link_wepps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CarpRules V1.0 by Wepps"
+        android:text="CarpRules V1.1 by Wepps"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
